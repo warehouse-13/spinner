@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spinner
+  labels:
+    app: spinner
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: spinner
+  template:
+    metadata:
+      labels:
+        app: spinner
+    spec:
+      containers:
+      - name: spinner
+        image: docker.io/claudiaberesford/spinner:latest
+        ports:
+        - containerPort: 8080
