@@ -5,28 +5,14 @@ a tiny thing to smash the cpu.
 ## Getting Started
 Open a terminal with `htop` on the right side to monitor the CPU usage of the local machine.
 
-Set Deployment.yaml to have `Replica: 1`.
-
-—
-Kind reports the CPU usage of the cluster as n/a. Autoscaler may not work with kind because it’s not able to detect what is happening. 
-
-Use minikube instead, download it here: https://minikube.sigs.k8s.io/docs/start/ 
-Create minikube cluster: `minikube start`
-—
-
 Create a kind cluster with 3 nodes:
 ```
-cat > kind-config.yaml <<EOF
-# three node (two workers) cluster config
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
-nodes:
-- role: control-plane
-- role: worker
-- role: worker
-EOF
-
 kind create cluster –name ipv6 –config kind-config.yaml
+```
+
+Apply the Deployment & Service manifest:
+```
+k apply -f deployment.yaml
 ```
 
 ### Install a Metrics Server on the cluster. 
