@@ -1,13 +1,12 @@
 package handlers
 
 import (
-	"fmt"
+	"log"
 	"net/http"
-	"os"
 )
 
 func Spin(http.ResponseWriter, *http.Request) {
-	fmt.Println("starting")
+	log.Println("starting")
 	for {
 		for i := 0; i < 100000000; i++ {
 		}
@@ -15,6 +14,5 @@ func Spin(http.ResponseWriter, *http.Request) {
 }
 
 func Unspin(http.ResponseWriter, *http.Request) {
-	fmt.Println("stopping")
-	os.Exit(200)
+	log.Println("stopping")
 }
