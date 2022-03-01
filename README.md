@@ -4,7 +4,7 @@ a tiny thing to smash the cpu.
 
 ## Getting Started
 ```
-make run
+make up
 ```
 
 or
