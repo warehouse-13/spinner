@@ -18,16 +18,19 @@ func Spin(http.ResponseWriter, *http.Request) {
 				log.Println("received signal to stop")
 				break loop
 			default:
-				for i := 0; i < 3; i++ {
+				for i := 0; i < 1000; i++ {
 				}
 			}
 		}
+		log.Println("stopped spinning")
 	}()
-
-	log.Println("stopped")
 }
 
 func Unspin(http.ResponseWriter, *http.Request) {
 	log.Println("sending signal to stop")
-	close(quit)
+	if quit != nil {
+		close(quit)
+	} else {
+		log.Println("not spinning yet")
+	}
 }
