@@ -7,7 +7,7 @@ import (
 
 var quit chan struct{}
 
-func Spin(http.ResponseWriter, *http.Request) {
+func StartSpinning() {
 	quit = (make(chan struct{}))
 	log.Println("starting to spin")
 	go func() {
@@ -24,6 +24,10 @@ func Spin(http.ResponseWriter, *http.Request) {
 		}
 		log.Println("stopped spinning")
 	}()
+}
+
+func Spin(http.ResponseWriter, *http.Request) {
+	StartSpinning()
 }
 
 func Unspin(http.ResponseWriter, *http.Request) {

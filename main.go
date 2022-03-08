@@ -12,6 +12,7 @@ const port = ":8080"
 
 func main() {
 	r := mux.NewRouter()
+	handlers.StartSpinning()
 	r.HandleFunc("/spin", handlers.Spin)
 	r.HandleFunc("/unspin", handlers.Unspin)
 
